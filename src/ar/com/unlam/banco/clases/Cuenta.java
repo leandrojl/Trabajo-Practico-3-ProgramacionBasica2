@@ -25,8 +25,8 @@ public class Cuenta {
 	}
 	
 	public Double extraer(Double monto) {
-		Double montoAExtraer= saldo-monto;
-		return montoAExtraer;
+		this.saldo= saldo-monto;
+		return saldo;
 	};
 
 }

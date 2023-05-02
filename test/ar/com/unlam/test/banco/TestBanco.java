@@ -42,6 +42,18 @@ public class TestBanco {
 		Assert.assertTrue(cuentasueldo.getSaldo().equals(montoADepositar));
 	}
 	
+	@Test
+	public void queNoSePuedaExtraerDeLaCuentaSueldoMasDineroDelQueHay() {
+		CuentaSueldo cuentasueldo = new CuentaSueldo();
+		
+		Double montoADepositar= 1000.0;
+		
+		cuentasueldo.depositar(montoADepositar);
+		cuentasueldo.extraer(2000.0);
+		
+		Assert.assertTrue(cuentasueldo.getSaldo().equals(montoADepositar));
+	}
+	
 	public void queSeCobreCincoPorcientoDeComisionAlDepositarDineroLuegoDeHaberRealizadoUnaExtraccionMayorAlSaldo() {
 		
 	}
