@@ -9,6 +9,7 @@ import ar.com.unlam.banco.clases.Banco;
 import ar.com.unlam.banco.clases.CajaDeAhorros;
 import ar.com.unlam.banco.clases.Cliente;
 import ar.com.unlam.banco.clases.Cuenta;
+import ar.com.unlam.banco.clases.CuentaCorriente;
 import ar.com.unlam.banco.clases.CuentaSueldo;
 
 public class TestBanco {
@@ -76,6 +77,13 @@ public class TestBanco {
 	
 	public void queSeCobreCincoPorcientoDeComisionAlDepositarDineroLuegoDeHaberRealizadoUnaExtraccionMayorAlSaldo() {
 		
+		Double montoADepositar= 10000.0;
+		Double montoEsperado= 3994.0;
+		CuentaCorriente cuentacorriente = new CuentaCorriente();
+		
+		
+		cuentacorriente.depositar(montoADepositar);
+		cuentacorriente.extraer(12000.0);
 	}
 
 }
