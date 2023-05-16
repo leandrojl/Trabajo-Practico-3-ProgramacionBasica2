@@ -2,7 +2,7 @@ package ar.com.unlam.banco.clases;
 
 public class CuentaCorriente extends Cuenta{
 	
-	Double descubierto=0.0;
+	Double descubierto;
 	
 	public CuentaCorriente() {
 		super();
@@ -14,18 +14,21 @@ public class CuentaCorriente extends Cuenta{
 	
 	@Override
 	public Double extraer(Double monto) {
-		if(monto > this.saldo) {
-			setDescubierto(this.saldo-monto);
+		if(monto > getSaldo() && getDescubierto()>= Math.abs((getSaldo()-monto))) {
+			Double descubiertoUtilizado=Math.abs((getSaldo()-monto));
+			Double nuevoSaldo= getSaldo()-(monto+(descubiertoUtilizado*0.05));
+			setSaldo(nuevoSaldo);
+			return monto;
+		}else {
+			Double saldoARetirar=getSaldo()-monto;
+			setSaldo(saldoARetirar);
+			return getSaldo()-monto;
 		}
-		return monto;
+		
 	}
 	@Override
 	public void depositar(Double monto) {
-		if(getDescubierto() != 0.0) {
-			descubierto= this.saldo -(monto+(monto*0.05));
-		}else {
-			this.saldo= saldo+monto;
-		}
+		setSaldo(getSaldo()+monto);
 	}
 	public Double getDescubierto() {
 		return descubierto;

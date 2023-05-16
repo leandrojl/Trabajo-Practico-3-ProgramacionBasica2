@@ -75,15 +75,46 @@ public class TestBanco {
 		
 	}
 	
-	public void queSeCobreCincoPorcientoDeComisionAlDepositarDineroLuegoDeHaberRealizadoUnaExtraccionMayorAlSaldo() {
-		
-		Double montoADepositar= 10000.0;
-		Double montoEsperado= 3994.0;
-		CuentaCorriente cuentacorriente = new CuentaCorriente();
+	@Test
+	public void queSeCobreCincoPorCientoDeComisionAlExtraerDineroMayorAlSado() {
+		Double montoADepositar= 100.0;
+		Double montoEsperado= -105.0;
+		Double descubierto= 100.0;
+		CuentaCorriente cuentacorriente = new CuentaCorriente(descubierto);
 		
 		
 		cuentacorriente.depositar(montoADepositar);
-		cuentacorriente.extraer(12000.0);
+		cuentacorriente.extraer(200.0);
+		
+		Assert.assertEquals(montoEsperado, cuentacorriente.getSaldo());
+		
+	}
+	@Test
+	public void queSeCobreCincoPorCientoDeComisionAlDepositarDineroLuegoDeHaberRealizadoUnaExtraccionMayorAlSaldo() {
+	}
+	@Test
+	public void queSeCobreElCincoPorCientoDeComisionPorMasQueElProximoDepositoNoSeaSuficieteParaCubrirElDescubierto() {
+		
+	}
+	@Test
+	public void queUnaExtraccionCuandoYaSeTieneDeudaIncrementeLaDeuda(){
+		
+	}
+	@Test
+	public void queVariasOperacionesDeDepositoYExtraccionGenerenElSaldoYLaDeudaCorrecta() {
+		
+	}
+	@Test
+	public void queUnClientePuedaTenerVariasCuentas() {
+		
+	}
+	@Test
+	public void queUnClientePuedaSerVip() {
+		
+	}
+	@Test
+	public void queUnClienteConSaldoMayorA1MillonYSinSaldoNegativoEnOtrasCuentasSeaConsideradoVip() {
+		
 	}
 
 }
