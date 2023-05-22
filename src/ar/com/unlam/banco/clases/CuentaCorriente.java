@@ -17,6 +17,8 @@ public class CuentaCorriente extends Cuenta{
 		if(monto > getSaldo() && getDescubierto()>= Math.abs((getSaldo()-monto))) {
 			Double descubiertoUtilizado=Math.abs((getSaldo()-monto));
 			Double nuevoSaldo= getSaldo()-(monto+(descubiertoUtilizado*0.05));
+			Double descubiertoActual= getDescubierto()-descubiertoUtilizado;
+			setDescubierto(descubiertoActual);
 			setSaldo(nuevoSaldo);
 			return monto;
 		}else {

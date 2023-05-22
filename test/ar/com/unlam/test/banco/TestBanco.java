@@ -77,20 +77,33 @@ public class TestBanco {
 	
 	@Test
 	public void queSeCobreCincoPorCientoDeComisionAlExtraerDineroMayorAlSado() {
-		Double montoADepositar= 100.0;
-		Double montoEsperado= -105.0;
-		Double descubierto= 100.0;
+		Double montoADepositar= 1000.0;
+		Double montoEsperado= -1050.0;
+		Double descubierto= 1000.0;
 		CuentaCorriente cuentacorriente = new CuentaCorriente(descubierto);
 		
 		
 		cuentacorriente.depositar(montoADepositar);
-		cuentacorriente.extraer(200.0);
+		cuentacorriente.extraer(2000.0);
 		
 		Assert.assertEquals(montoEsperado, cuentacorriente.getSaldo());
 		
 	}
 	@Test
 	public void queSeCobreCincoPorCientoDeComisionAlDepositarDineroLuegoDeHaberRealizadoUnaExtraccionMayorAlSaldo() {
+		Double montoADepositar= 1000.0;
+		Double montoEsperado= 950.0;
+		Double descubiertoEsperado= 0.0;
+		Double descubierto= 1000.0;
+		CuentaCorriente cuentacorriente = new CuentaCorriente(descubierto);
+		
+		
+		cuentacorriente.depositar(montoADepositar);
+		cuentacorriente.extraer(2000.0);
+		cuentacorriente.depositar(2000.0);
+	
+		Assert.assertEquals(montoEsperado, cuentacorriente.getSaldo());
+		Assert.assertEquals(descubiertoEsperado, cuentacorriente.getDescubierto());
 	}
 	@Test
 	public void queSeCobreElCincoPorCientoDeComisionPorMasQueElProximoDepositoNoSeaSuficieteParaCubrirElDescubierto() {
